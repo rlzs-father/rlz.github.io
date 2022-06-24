@@ -13,24 +13,19 @@ let myButton = document.querySelector('button');
 let myHeading = document.querySelector('h1');
 function setUserName() {
   let myName = prompt('请输入你的名字。');
-  localStorage.setItem('name', myName);
-  myHeading.textContent = 'Mozilla 酷毙了，' + myName;
+  if(!myName) {
+    setUserName();
+  } else {
+    localStorage.setItem('name', myName);
+    myHeading.textContent = '霸总rlz与'+ myName+'的故事';
+  }
 }
 if(!localStorage.getItem('name')) {
   setUserName();
 } else {
   let storedName = localStorage.getItem('name');
-  myHeading.textContent = 'Mozilla 酷毙了，' + storedName;
+  myHeading.textContent ='霸总rlz与'+ storedName+'的故事';
 }
 myButton.onclick = function() {
    setUserName();
-}
-function setUserName() {
-  let myName = prompt('请输入你的名字。');
-  if(!myName) {
-    setUserName();
-  } else {
-    localStorage.setItem('name', myName);
-    myHeading.textContent = 'Mozilla 酷毙了，' + myName;
-  }
 }
